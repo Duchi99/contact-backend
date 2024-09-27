@@ -1,13 +1,16 @@
 const express = require("express");
-const dotenv = require("dotenv");
+const cors = require("cors");
 const multer = require("multer");
 const { connectDB } = require("./config/db");
 const contactRoutes = require("./routes/contactRoutes.js");
 
-dotenv.config(); // Load environment variables
+require("dotenv").config(); // Load environment variables
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Enable CORS for cross-origin requests
+app.use(cors());
 
 // Middleware to parse JSON and form data
 app.use(express.json());
